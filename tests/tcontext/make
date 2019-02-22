@@ -1,0 +1,7 @@
+CONTEXT_TEST_HDRS=..\..\hdrs\context.h ..\..\hdrs\ints.h context_stable.h context_test.h
+
+test.com: context_test.obj
+	wcl -0 -lr -l=COM context_test.obj
+	
+context_test.obj: context_test.c $(CONTEXT_TEST_HDRS)
+	wcc -0 -ox context_test.c
