@@ -19,7 +19,7 @@ void PrintFullContext(CPU_Context* pcontext, uint16_t programCS, uint16_t progra
 
 void TraceHandler(CPU_Context* pcontext, uint16_t programCS, uint16_t programIP, uint16_t programNextCS, uint16_t programNextIP)
 {
-	printf("\nTraceHandler %X:%X -> %X\n", programCS, programIP, programNextIP);
+	printf("\nTraceHandler %X:%X -> %X stack: %X %X %X\n", programCS, programIP, programNextIP, *FARPTR(pcontext->SS, pcontext->SP), *FARPTR(pcontext->SS, pcontext->SP+2), *FARPTR(pcontext->SS, pcontext->SP+4));
 	PrintFullContext(pcontext, programCS, programIP);
 	_getch();
 	
