@@ -1,7 +1,16 @@
-CONTEXT_TEST_HDRS=..\..\hdrs\context.h ..\..\hdrs\ints.h context_stable.h context_test.h
+CONTEXT_HDRS=..\..\hdrs\context.h
+SCONTEXT_HDRS= scontext.h
+TCONTEXT_HDRS=..\..\hdrs\context.h ints.h scontext.h tcontext.h
 
-test.com: context_test.obj
-	wcl -0 -lr -l=COM context_test.obj
+
+tcontext.com: tcontext.obj scontext.obj ..\..\objs\context.obj
+	wcl -0 -lr -l=COM tcontext.obj scontext.obj ..\..\objs\context.obj
 	
-context_test.obj: context_test.c $(CONTEXT_TEST_HDRS)
-	wcc -0 -ox context_test.c
+tcontext.obj: tcontext.c $(TCONTEXT_HDRS)
+	wcc -0 -ox tcontext.c
+	
+scontext.obj: scontext.c $(SCONTEXT_HDRS)
+	wcc -0 -ox scontext.c
+	
+..\..\objs\context.obj: ..\..\src\context.c $(CONTEXT_HDRS)
+	wcc -0 ..\..\src\context.c -fo=..\..\objs\context.obj -fr=..\..\errs\context.err

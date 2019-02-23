@@ -1,5 +1,5 @@
-#ifndef CONTEXT_H
-#define CONTEXT_H
+#ifndef SCONTEXT_H
+#define SCONTEXT_H
 
 #include <stdint.h>
 
