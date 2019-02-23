@@ -2,9 +2,9 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
-#include "hdrs\ints.h"
-#include "hdrs\context.h"
-#include "hdrs\prgldr.h"
+#include "..\misc\ints.h"
+#include "..\context\context.h"
+#include "prgldr.h"
 
 static int loadCode(const char* path, uint16_t dataseg, uint16_t dataoffset, uint16_t size)
 {

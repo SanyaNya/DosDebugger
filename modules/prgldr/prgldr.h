@@ -2,7 +2,7 @@
 #define PRGLDR_H
 
 #include <stdint.h>
-#include "hdrs\context.h"
+#include "..\context\context.h"
 
 //Выделяет сегмент для программы и загружает ее туда
 //Инициализирует контекст программы (в зависимости от COM или EXE)

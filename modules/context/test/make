@@ -1,0 +1,12 @@
+SCONTEXT_HDRS= scontext.h
+TCONTEXT_HDRS=..\context.h ints.h scontext.h tcontext.h
+
+
+tcontext.com: tcontext.obj scontext.obj ..\context.obj
+	wcl -0 -lr -l=COM tcontext.obj scontext.obj ..\context.obj
+	
+tcontext.obj: tcontext.c $(TCONTEXT_HDRS)
+	wcc -0 -ox tcontext.c
+	
+scontext.obj: scontext.c $(SCONTEXT_HDRS)
+	wcc -0 scontext.c

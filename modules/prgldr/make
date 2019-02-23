@@ -1,0 +1,4 @@
+PRGLDR_HDRS=..\misc\ints.h ..\context\context.h prgldr.h
+
+prgldr.obj: prgldr.c $(PRGLDR_HDRS)
+	wcc -0 -ox prgldr.c

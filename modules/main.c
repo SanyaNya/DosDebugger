@@ -3,10 +3,10 @@
 #include <errno.h>
 #include <conio.h>
 #include <dos.h>
-#include "hdrs\ints.h"
-#include "hdrs\context.h"
-#include "hdrs\dbgr.h"
-#include "hdrs\prgldr.h"
+#include "misc\ints.h"
+#include "context\context.h"
+#include "dbgr\dbgr.h"
+#include "prgldr\prgldr.h"
 
 uint16_t prgIP;
 uint16_t prgCS;

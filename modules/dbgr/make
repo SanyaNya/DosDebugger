@@ -1,0 +1,4 @@
+DBGR_HDRS=..\misc\ints.h ..\context\context.h dbgr.h
+
+dbgr.obj: dbgr.c $(DBGR_HDRS)
+	wcc -0 -ox dbgr.c

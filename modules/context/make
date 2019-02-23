@@ -1,0 +1,4 @@
+CONTEXT_HDRS=context.h
+
+context.obj: context.c $(CONTEXT_HDRS)
+	wcc -0 context.c

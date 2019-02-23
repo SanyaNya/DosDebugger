@@ -2,7 +2,7 @@
 #define DBGR_H
 
 #include <stdint.h>
-#include "hdrs\context.h"
+#include "..\context\context.h"
 
 //Применение:
 //Загрузка программы в память

@@ -1,7 +1,7 @@
 #include <stdint.h>
-#include "hdrs\ints.h"
-#include "hdrs\context.h"
-#include "hdrs\dbgr.h"
+#include "..\misc\ints.h"
+#include "..\context\context.h"
+#include "dbgr.h"
 
 //Принцип работы:
 //Флаг TF устанавливается в 1, тем самым после выполнения каждой инструкции вызывается прерывание 1.

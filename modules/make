@@ -1,0 +1,7 @@
+MAIN_HDRS=misc\ints.h context\context.h dbgr\dbgr.h prgldr\prgldr.h
+
+gen.com: main.obj prgldr\prgldr.obj dbgr\dbgr.obj context\context.obj
+	wcl -0 -lr -l=COM main.obj prgldr\prgldr.obj dbgr\dbgr.obj context\context.obj -fe=gen.com
+
+main.obj: main.c $(MAIN_HDRS)
+	wcc -0 -ox main.c

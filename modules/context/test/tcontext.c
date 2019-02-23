@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include "..\..\hdrs\context.h"
 #include "ints.h"
 #include "scontext.h"
+#include "..\context.h"
 #include "tcontext.h"
 
 static Stable_CPU_Context stable_context_func;
