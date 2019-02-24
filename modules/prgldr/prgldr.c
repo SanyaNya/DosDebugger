@@ -6,6 +6,13 @@
 #include "..\context\context.h"
 #include "prgldr.h"
 
+#define PRG_OFFSET 0x100
+#define PRG_MAX_SIZE 0xff00
+
+//TODO
+//load PSP
+//load exe
+
 static int loadCode(const char* path, uint16_t dataseg, uint16_t dataoffset, uint16_t size)
 {
 	FILE* fp = fopen(path, "rb");
@@ -27,9 +34,9 @@ static int loadCode(const char* path, uint16_t dataseg, uint16_t dataoffset, uin
 static uint16_t LoadComProgram(const char* path, CPU_Context* pcontext, uint16_t* pProgIP)
 {
 	uint16_t _prgSeg = NEXT_SEG(GET_CS());
-	*pProgIP = 0x100;
+	*pProgIP = PRG_OFFSET;
 	
-	if(!loadCode(path, _prgSeg, *pProgIP, 65535))
+	if(!loadCode(path, _prgSeg, *pProgIP, PRG_MAX_SIZE))
 		return 0;
 	
 	pcontext->AX = 0;
@@ -74,9 +81,4 @@ uint16_t LoadProgram(const char* path, CPU_Context* pcontext, uint16_t* pProgIP)
 		errno = ENOEXEC;
 		return 0;
 	}
-}
-
-void FreeProgram(uint16_t seg)
-{
-	//_dos_freemem(seg);
 }

@@ -10,7 +10,4 @@
 //В случае ошибки возвращает 0 и изменяет errno
 uint16_t LoadProgram(const char* path, CPU_Context* pcontext, uint16_t* pPrgIP);
 
-//Освобождает выделенный под программу сегмент
-void FreeProgram(uint16_t seg);
-
 #endif
