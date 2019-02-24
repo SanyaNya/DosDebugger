@@ -33,12 +33,16 @@ static int loadCode(const char* path, uint16_t dataseg, uint16_t dataoffset, uin
 
 static uint16_t LoadComProgram(const char* path, CPU_Context* pcontext, uint16_t* pProgIP)
 {
+	//Запись файла в следующий сегмент по адресу PRG_OFFSET
 	uint16_t _prgSeg = NEXT_SEG(GET_CS());
 	*pProgIP = PRG_OFFSET;
+	
+	//Загрузка PSP пока не реализована
 	
 	if(!loadCode(path, _prgSeg, *pProgIP, PRG_MAX_SIZE))
 		return 0;
 	
+	//Инициализация регистров программы
 	pcontext->AX = 0;
 	pcontext->CX = 0;
 	pcontext->DX = 0;
@@ -60,25 +64,28 @@ static uint16_t LoadComProgram(const char* path, CPU_Context* pcontext, uint16_t
 
 static uint16_t LoadExeProgram(const char* path, CPU_Context* pcontext, uint16_t* pProgIP)
 {
+	//Пока не реализовано
+	
 	return 0;
 } 
 
 uint16_t LoadProgram(const char* path, CPU_Context* pcontext, uint16_t* pProgIP)
 {
+	//Получаем строку с форматом файла
 	char* progType = strchr(path, '.');
 	if(!progType)
 	{
-		errno = ENOEXEC;
+		errno = ENOEXEC; //Нет формата
 		return 0;
 	}
-	
 	progType++;
 	
+	//Загрузка программы в зависимоти от формата
 	if(!strcmp(progType, "com")) return LoadComProgram(path, pcontext, pProgIP);
 	else if(!strcmp(progType, "exe")) return LoadExeProgram(path, pcontext, pProgIP);
 	else
 	{
-		errno = ENOEXEC;
+		errno = ENOEXEC; //Неизвестный формат
 		return 0;
 	}
 }
