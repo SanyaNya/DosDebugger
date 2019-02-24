@@ -37,8 +37,6 @@ int main()
 	}
 	
 	startDebugProgram(prgCS, prgIP, TraceHandler);
-
-	FreeProgram(prgCS);
 	
 	return 0;
 }
